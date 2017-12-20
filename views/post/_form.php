@@ -18,6 +18,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pub')->textInput() ?>
 
+    <?= $form->field($model, 'category_ids')
+    ->listBox($categories, ['multiple' => true])
+        /* or, you may use a checkbox list instead */
+        /* ->checkboxList($categories) */
+    ->hint('Select the categories of the post.');
+    ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
