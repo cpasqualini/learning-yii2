@@ -9,7 +9,8 @@ class PostWithCategories extends Post
     /**
      * @var array IDs of the categories
      */
-    $category_ids = [];
+	# PHP syntax error: syntax error, unexpected '$category_ids' (T_VARIABLE), expecting function (T_FUNCTION)
+    # $category_ids = [];
  
     /**
      * @return array the validation rules.
