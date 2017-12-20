@@ -61,11 +61,11 @@ class PostWithCategories extends Post
     public function saveCategories()
     {
         /* clear the categories of the post before saving */
-        PostCategory::deleteAll(['post_id' => $this->id]);
+        Postcategory::deleteAll(['post_id' => $this->id]);
         if (is_array($this->category_ids)) {
             foreach($this->category_ids as $category_id) {
                 $pc = new PostCategory();
-                $pc->post_id = $this->post_id;
+                $pc->post_id = $this->id;
                 $pc->category_id = $category_id;
                 $pc->save();
             }
