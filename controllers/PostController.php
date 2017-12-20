@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Post;
 use app\models\PostWithCategories;
+use app\models\Category;
+use app\models\CategoryQuery;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

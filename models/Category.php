@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "category".
@@ -66,8 +67,8 @@ class Category extends \yii\db\ActiveRecord
      */
     public static function getAvailableCategories()
     {
-	    $categories = self::find()->order('name')->asArray()->all();
-	    $items = ArrayHelper::map($category, 'id', 'name');
+	    $av_categories = self::find()->orderBy('name')->asArray()->all();
+	    $items = ArrayHelper::map($av_categories, 'id', 'name');
 	    return $items;
     }
 
