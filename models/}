@@ -1,0 +1,43 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+
+class PostWithCategories extends Post
+{
+	$category_ids = [];
+
+	public function rules()
+	{
+		return ArrayHelper::merge(parent::rules(), [
+			// each category must exist
+			[
+				'category_ids', 'each', 'rule' => [
+					'exist', 'targetClass' => Category::className(), 'targetAttribute' => 'id'
+				]
+			],
+		]);
+	}
+
+	public function atributeLabels()
+	{
+		return ArrayHelper::merce(parent::attributeLabels(), [
+			'category_ids' => 'Categories'
+		]);
+	}
+
+	public function loadCategories()
+	{
+		$this->category_ids = [];
+		if (! empty($this->id))
+		{
+			$rows = Postcategory::find()
+				->select(['category_id'])
+				->where(['post_id' => $this->id])
+				->asArray()
+				->all();
+		}
+	}
+}
