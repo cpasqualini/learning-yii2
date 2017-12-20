@@ -63,11 +63,15 @@ class PostController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Post();
+        $model = new PostWithCategories();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+	if ($model->load(Yii::$app->request->post()) && $model->save())
+	{
+		$model->saveCategories();
+		return $this->redirect(['view', 'id' => $model->id]);
+	}
+	else
+	{
             return $this->render('create', [
                 'model' => $model,
             ]);
