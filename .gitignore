@@ -29,5 +29,10 @@ phpunit.phar
 tests/_output/*
 tests/_support/_generated
 
-config/
+config/*
+
+#temporary files
+*.sw?
+*~
+
 
