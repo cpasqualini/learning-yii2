@@ -59,4 +59,16 @@ class Category extends \yii\db\ActiveRecord
     {
         return new CategoryQuery(get_called_class());
     }
+
+    /**
+     * @inheritdoc
+     * @return array available categories
+     */
+    public static function getAvailableCategories()
+    {
+	    $categories = self::find()->order('name')->asArray()->all();
+	    $items = ArrayHelper::map($category, 'id', 'name');
+	    return $items;
+    }
+
 }
