@@ -10,8 +10,8 @@ class PostWithCategories extends Post
     /**
      * @var array IDs of the categories
      */
-	# PHP syntax error: syntax error, unexpected '$category_ids' (T_VARIABLE), expecting function (T_FUNCTION)
-    # $category_ids = [];
+	# Declare visibility: http://www.yiiframework.com/forum/index.php/topic/69791-crud-many-to-many-in-yii2/page__view__findpost__p__314817
+    public $category_ids = [];
  
     /**
      * @return array the validation rules.
