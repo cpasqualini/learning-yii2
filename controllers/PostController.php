@@ -74,7 +74,8 @@ class PostController extends Controller
 	else
 	{
             return $this->render('create', [
-                'model' => $model,
+		    'model' => $model,
+		    'categories' => Category::getAvailableCategories(),
             ]);
         }
     }
