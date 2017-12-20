@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use Yii\helpers\ArrayHelper;
+use yii\helpers\ArrayHelper;
 
 class PostWithCategories extends Post
 {
