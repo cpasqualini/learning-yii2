@@ -95,10 +95,14 @@ class PostController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 		$model->saveCategories();
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+	} else {
+		# Get list of all categories
+		$categories = Category::getAvailableCategories();
+		# Set previously selected categories
+		$model->category_ids = $model->getSelectedCategories();
             return $this->render('update', [
-                'model' => $model,
-		    'categories' => Category::getAvailableCategories(),
+		    'model' => $model,
+		    'categories' => $categories,
             ]);
         }
     }

@@ -44,7 +44,7 @@ class PostWithCategories extends Post
     {
         $this->category_ids = [];
         if (!empty($this->id)) {
-            $rows = PostCategory::find()
+            $rows = Postcategory::find()
                 ->select(['category_id'])
                 ->where(['post_id' => $this->id])
                 ->asArray()
@@ -71,5 +71,19 @@ class PostWithCategories extends Post
             }
         }
         /* Be careful, $this->category_ids can be empty */
+    }
+
+    public function getSelectedCategories()
+    {
+	    $selCategories = array();
+            $rows = Postcategory::find()
+                ->select(['category_id'])
+                ->where(['post_id' => $this->id])
+                ->asArray()
+                ->all();
+            foreach($rows as $row) {
+               $selCategories[] = $row['category_id'];
+            }
+	    return $selCategories;
     }
 }
